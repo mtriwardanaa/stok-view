@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @yield('pengguna')" href="{{ url('pengguna') }}"
+                    <a class="menu-link @yield('ambil-barang')" href="{{ url('ambil-barang') }}"
                         title="Menu Pengambilan Barang" data-bs-toggle="tooltip" data-bs-trigger="hover"
                         data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon">

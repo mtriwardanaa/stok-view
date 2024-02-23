@@ -1,0 +1,11 @@
+{
+    "name": "AmbilBarang",
+    "alias": "ambilbarang",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AmbilBarang\\App\\Providers\\AmbilBarangServiceProvider"
+    ],
+    "files": []
+}

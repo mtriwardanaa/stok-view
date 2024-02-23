@@ -2,5 +2,6 @@
     "User": true,
     "Role": true,
     "StokBarang": true,
-    "FormMasuk": true
+    "FormMasuk": true,
+    "AmbilBarang": true
 }

@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/ambilbarang",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AmbilBarang\\": "",
+            "Modules\\AmbilBarang\\App\\": "app/",
+            "Modules\\AmbilBarang\\Database\\Factories\\": "database/factories/",
+            "Modules\\AmbilBarang\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\AmbilBarang\\Tests\\": "tests/"
+        }
+    }
+}

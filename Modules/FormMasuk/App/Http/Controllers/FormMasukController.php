@@ -100,27 +100,4 @@ class FormMasukController extends Controller
             return back()->withErrors([$th->getMessage()]);
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function delete($id)
-    {
-        try {
-            $delete = $this->clientHttp->delete('v1/roles/' . $id);
-
-            if (isset($delete['status']) && $delete['status']) {
-                return redirect()->back()
-                    ->with('success', ['Role berhasil dihapus']);
-            } elseif (isset($delete['status']) && !$delete['status']) {
-                return redirect()->back()
-                    ->with('error', $delete['messages']);
-            }
-
-            return redirect()->back()
-                ->with('error', ['Something went wrong']);
-        } catch (\Throwable $th) {
-            return back()->withErrors([$th->getMessage()]);
-        }
-    }
 }
