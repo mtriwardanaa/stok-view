@@ -1,0 +1,11 @@
+{
+    "name": "StokBarang",
+    "alias": "stokbarang",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\StokBarang\\App\\Providers\\StokBarangServiceProvider"
+    ],
+    "files": []
+}

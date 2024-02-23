@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @yield('pegawai')" href="{{ route('list-pegawai') }}" title="Menu Stok Barang"
+                    <a class="menu-link @yield('stok-barang')" href="{{ url('stok-barang') }}" title="Menu Stok Barang"
                         data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                         data-bs-placement="right">
                         <span class="menu-icon">
