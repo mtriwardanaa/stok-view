@@ -3,18 +3,23 @@
 namespace Modules\User\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Lib\ClientHttp;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+    public function __construct(
+        private ClientHttp $clientHttp,
+    ) {
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('user::index');
+        $data = $this->clientHttp->get('v1/users');
+        return view('user::index', ['data' => $data['data']]);
     }
 
     /**

@@ -1,8 +1,8 @@
 @extends('base.base')
 
-@section('title', 'User')
-@section('subtitle', 'User')
-@section('user', 'active')
+@section('title', 'Role')
+@section('subtitle', 'Role')
+@section('role', 'active')
 
 @section('css')
     <link href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" rel="stylesheet" type="text/css" />
@@ -14,14 +14,22 @@
 
     <script>
         new DataTable('#example');
+
+        $(document).on('click', '.btn-delete', function() {
+            if (confirm('Are you sure you want to save this thing into the database?')) {
+                var id = $(this).data('id');
+                window.location.href = "{{ url('role/delete') }}" + '/' + id;
+            }
+        });
     </script>
 @endsection
 
 @section('content')
     <div id="kt_content_container" class="container-xxl">
         <!--begin::Card-->
+        @include('partials.notif')
         <div class="card">
-            @include('user::header')
+            @include('role::header')
             <!--begin::Card body-->
             <div class="card-body py-4">
                 <!--begin::Table-->
@@ -29,19 +37,23 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th>Label</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (isset($data))
-                            @foreach ($data as $user)
+                            @foreach ($data as $role)
                                 <tr>
-                                    <td>{{ $user['name'] }}</td>
-                                    <td>{{ $user['email'] }}</td>
-                                    <td>{{ $user['role']['name'] ?? '-' }}</td>
-                                    <td>{{ $user['role']['name'] ?? '-' }}</td>
+                                    <td>{{ $role['name'] }}</td>
+                                    <td>{{ $role['label'] }}</td>
+                                    <td>
+                                        <a href="{{ url('role/' . $role['id'] . '/edit') }}"><button
+                                                class="btn btn-sm btn-warning">Edit</button>
+                                        </a>
+                                        <button class="btn btn-sm btn-danger btn-delete"
+                                            data-id="{{ $role['id'] }}">Hapus</button>
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
@@ -49,8 +61,7 @@
                     <tfoot>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th>Label</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
