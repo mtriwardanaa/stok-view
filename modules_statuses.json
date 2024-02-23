@@ -1,5 +1,6 @@
 {
     "User": true,
     "Role": true,
-    "StokBarang": true
+    "StokBarang": true,
+    "FormMasuk": true
 }

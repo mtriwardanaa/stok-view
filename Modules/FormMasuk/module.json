@@ -1,0 +1,11 @@
+{
+    "name": "FormMasuk",
+    "alias": "formmasuk",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FormMasuk\\App\\Providers\\FormMasukServiceProvider"
+    ],
+    "files": []
+}

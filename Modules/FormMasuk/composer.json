@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/formmasuk",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FormMasuk\\": "",
+            "Modules\\FormMasuk\\App\\": "app/",
+            "Modules\\FormMasuk\\Database\\Factories\\": "database/factories/",
+            "Modules\\FormMasuk\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\FormMasuk\\Tests\\": "tests/"
+        }
+    }
+}

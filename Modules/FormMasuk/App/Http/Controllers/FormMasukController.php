@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Role\App\Http\Controllers;
+namespace Modules\FormMasuk\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Lib\ClientHttp;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class FormMasukController extends Controller
 {
     public function __construct(
         private ClientHttp $clientHttp,
@@ -17,8 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data = $this->clientHttp->get('v1/roles');
-        return view('role::index', ['data' => $data['data']]);
+        $data = $this->clientHttp->get('v1/incoming-goods');
+        return view('formmasuk::index', ['data' => $data['data']]);
     }
 
     /**
@@ -26,8 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $data = $this->clientHttp->get('v1/permissions');
-        return view('role::create', ['data' => $data['data']]);
+        $goods = $this->clientHttp->get('v1/goods');
+        return view('formmasuk::create', ['goods' => $goods['data']]);
     }
 
     /**
@@ -38,11 +38,11 @@ class RoleController extends Controller
         $post = $request->except('_token');
 
         try {
-            $create = $this->clientHttp->post('v1/roles', $post);
+            $create = $this->clientHttp->post('v1/incoming-goods', $post);
 
             if (isset($create['status']) && $create['status']) {
                 return redirect()->back()
-                    ->with('success', ['Role berhasil dibuat']);
+                    ->with('success', ['Form Masuk berhasil dibuat']);
             } elseif (isset($create['status']) && !$create['status']) {
                 return redirect()->back()
                     ->with('error', $create['messages']);
@@ -60,7 +60,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return view('role::show');
+        return view('formmasuk::show');
     }
 
     /**
@@ -68,11 +68,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $permissions = $this->clientHttp->get('v1/permissions');
-        $role = $this->clientHttp->get('v1/roles/' . $id);
-        return view('role::edit', [
-            'data' => $permissions['data'],
-            'role' => $role['data'],
+        $goods = $this->clientHttp->get('v1/goods');
+        $formMasuk = $this->clientHttp->get('v1/incoming-goods/' . $id);
+        return view('formmasuk::edit', [
+            'goods'     => $goods['data'],
+            'formMasuk' => $formMasuk['data'],
         ]);
     }
 
@@ -84,11 +84,11 @@ class RoleController extends Controller
         $post = $request->except('_token');
 
         try {
-            $update = $this->clientHttp->put('v1/roles/' . $id, $post);
+            $update = $this->clientHttp->put('v1/incoming-goods/' . $id, $post);
 
             if (isset($update['status']) && $update['status']) {
                 return redirect()->back()
-                    ->with('success', ['Role berhasil diupdate']);
+                    ->with('success', ['Form Masuk berhasil diupdate']);
             } elseif (isset($update['status']) && !$update['status']) {
                 return redirect()->back()
                     ->with('error', $update['messages']);
