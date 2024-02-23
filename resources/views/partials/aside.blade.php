@@ -115,7 +115,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @yield('gaji')" href="{{ url('gaji') }}" title="Menu Form Keluar"
+                    <a class="menu-link @yield('form-keluar')" href="{{ url('form-keluar') }}" title="Menu Form Keluar"
                         data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                         data-bs-placement="right">
                         <span class="menu-icon">

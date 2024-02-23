@@ -3,5 +3,6 @@
     "Role": true,
     "StokBarang": true,
     "FormMasuk": true,
-    "AmbilBarang": true
+    "AmbilBarang": true,
+    "FormKeluar": true
 }

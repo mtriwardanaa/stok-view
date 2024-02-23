@@ -1,8 +1,8 @@
 @extends('base.base')
 
-@section('title', 'Pengambilan Barang')
-@section('subtitle', 'Pengambilan Barang')
-@section('ambil-barang', 'active')
+@section('title', 'Form Keluar')
+@section('subtitle', 'Form Keluar')
+@section('form-keluar', 'active')
 
 @section('css')
     <link href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" rel="stylesheet" type="text/css" />
@@ -18,7 +18,7 @@
         $(document).on('click', '.btn-delete', function() {
             if (confirm('Are you sure you want to save this thing into the database?')) {
                 var id = $(this).data('id');
-                window.location.href = "{{ url('ambil-barang/delete') }}" + '/' + id;
+                window.location.href = "{{ url('form-keluar/delete') }}" + '/' + id;
             }
         });
     </script>
@@ -29,7 +29,7 @@
         <!--begin::Card-->
         @include('partials.notif')
         <div class="card">
-            @include('ambilbarang::header')
+            @include('formkeluar::header')
             <!--begin::Card body-->
             <div class="card-body py-4">
                 <!--begin::Table-->
@@ -37,9 +37,10 @@
                     <thead>
                         <tr>
                             <th>Kode</th>
+                            <th>No Pengambilan</th>
+                            <th>Kode</th>
                             <th>Tanggal</th>
                             <th>Dibuat Oleh</th>
-                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -47,12 +48,13 @@
                         @if (isset($data))
                             @foreach ($data as $form)
                                 <tr>
-                                    <td>{{ $form['taking_number'] }}</td>
+                                    <td>{{ $form['takingGood']['taking_number'] }}</td>
+                                    <td>{{ $form['outgoing_number'] }}</td>
                                     <td>{{ date('d-m-Y', strtotime($form['date'])) }}</td>
-                                    <td>{{ $form['user_create']['name'] }}</td>
-                                    <td>{{ $form['status'] }}</td>
+                                    <td>{{ $form['user']['name'] }}</td>
                                     <td>
-                                        <a href="#"><button class="btn btn-sm btn-warning">Edit</button>
+                                        <a href="{{ url('form-keluar/' . $form['id'] . '/edit') }}"><button
+                                                class="btn btn-sm btn-warning">Edit</button>
                                         </a>
                                     </td>
                                 </tr>
@@ -61,10 +63,10 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>No Pengambilan</th>
                             <th>Kode</th>
                             <th>Tanggal</th>
                             <th>Dibuat Oleh</th>
-                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>

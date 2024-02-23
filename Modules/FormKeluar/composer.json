@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/formkeluar",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FormKeluar\\": "",
+            "Modules\\FormKeluar\\App\\": "app/",
+            "Modules\\FormKeluar\\Database\\Factories\\": "database/factories/",
+            "Modules\\FormKeluar\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\FormKeluar\\Tests\\": "tests/"
+        }
+    }
+}

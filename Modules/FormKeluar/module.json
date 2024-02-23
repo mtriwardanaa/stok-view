@@ -1,0 +1,11 @@
+{
+    "name": "FormKeluar",
+    "alias": "formkeluar",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FormKeluar\\App\\Providers\\FormKeluarServiceProvider"
+    ],
+    "files": []
+}
