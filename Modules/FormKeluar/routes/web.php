@@ -15,5 +15,5 @@ use Modules\FormKeluar\App\Http\Controllers\FormKeluarController;
 */
 
 Route::group([], function () {
-    Route::resource('form-keluar', FormKeluarController::class)->names('form-keluar');
+    Route::middleware('validate')->resource('form-keluar', FormKeluarController::class)->names('form-keluar');
 });

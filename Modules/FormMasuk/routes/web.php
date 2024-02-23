@@ -15,6 +15,6 @@ use Modules\FormMasuk\App\Http\Controllers\FormMasukController;
 */
 
 Route::group([], function () {
-    Route::resource('form-masuk', FormMasukController::class)->names('form-masuk');
-    Route::get('form-masuk/delete/{id}', [FormMasukController::class, 'delete']);
+    Route::middleware('validate')->resource('form-masuk', FormMasukController::class)->names('form-masuk');
+    Route::middleware('validate')->get('form-masuk/delete/{id}', [FormMasukController::class, 'delete']);
 });

@@ -15,6 +15,48 @@ class ClientHttp
         $this->client = new Client();
     }
 
+    public function postLogin($request)
+    {
+        $client = new Client;
+        $content = array(
+            'headers' => [
+                'Accept'          => 'application/json',
+                'Content-Type'    => 'application/json',
+                'ip-address-view' => $_SERVER["REMOTE_ADDR"],
+                'user-agent-view' => $_SERVER['HTTP_USER_AGENT'],
+            ],
+            'json'    => [
+                'grant_type'    => 'password',
+                'client_id'     => env('PASSWORD_CREDENTIAL_ID'),
+                'client_secret' => env('PASSWORD_CREDENTIAL_SECRET'),
+                'username'      => $request['username'],
+                'password'      => $request['password'],
+            ]
+        );
+
+        try {
+            $response = $client->request('POST', $this->uri . 'api/v1/tokens', $content);
+            return json_decode($response->getBody(), true);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            try {
+                if ($e->getResponse()) {
+                    $response = $e->getResponse()->getBody()->getContents();
+                    $error = json_decode($response, true);
+                    if (!$error) {
+                        return $e->getResponse()->getBody();
+                    } else {
+                        return ['status' => false, 'messages' => [0 => $error['message'] ?? $error]];
+                    }
+                } else {
+                    return ['status' => false, 'messages' => [0 => 'Check your internet connection.']];
+                }
+
+            } catch (\Exception $e) {
+                return ['status' => false, 'messages' => [0 => 'Check your internet connection.']];
+            }
+        }
+    }
+
     public function get(string $url)
     {
         $client = new Client;

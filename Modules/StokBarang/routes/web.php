@@ -15,5 +15,5 @@ use Modules\StokBarang\App\Http\Controllers\StokBarangController;
 */
 
 Route::group([], function () {
-    Route::resource('stok-barang', StokBarangController::class)->names('stok-barang');
+    Route::middleware('validate')->resource('stok-barang', StokBarangController::class)->names('stok-barang');
 });

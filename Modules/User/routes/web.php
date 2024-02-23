@@ -15,5 +15,5 @@ use Modules\User\App\Http\Controllers\UserController;
 */
 
 Route::group([], function () {
-    Route::resource('user', UserController::class)->names('user');
+    Route::middleware('validate')->resource('user', UserController::class)->names('user');
 });

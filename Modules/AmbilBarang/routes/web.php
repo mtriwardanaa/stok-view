@@ -15,5 +15,5 @@ use Modules\AmbilBarang\App\Http\Controllers\AmbilBarangController;
 */
 
 Route::group([], function () {
-    Route::resource('ambil-barang', AmbilBarangController::class)->names('ambil-barang');
+    Route::middleware('validate')->resource('ambil-barang', AmbilBarangController::class)->names('ambilbarang');
 });

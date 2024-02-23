@@ -15,6 +15,6 @@ use Modules\Role\App\Http\Controllers\RoleController;
 */
 
 Route::group([], function () {
-    Route::resource('role', RoleController::class)->names('role');
-    Route::get('role/delete/{id}', [RoleController::class, 'delete']);
+    Route::middleware('validate')->resource('role', RoleController::class)->names('role');
+    Route::middleware('validate')->get('role/delete/{id}', [RoleController::class, 'delete']);
 });
