@@ -12,6 +12,9 @@ Route::middleware('validate')->get('dashboard', function () {
 })->name('dashboard');
 
 Route::get('login', function () {
+    if (session()->has('access_token')) {
+        return redirect('dashboard');
+    }
     return view('login');
 })->name('login');
 
